@@ -1,21 +1,25 @@
 <template>
     <v-sheet min-width="300">
         <v-select 
-            v-model="selectedItem"
             label="Wähle einen Studiengang aus"
-            :items="items"
         />
     </v-sheet>
 </template>
   
 <script setup lang="ts">
-    import { ref } from 'vue'
+    import { ref, onMounted } from 'vue'
+    import axios from 'axios'
 
-    const selectedItem = ref(null)
-    const items = ref([
-    'item 1',
-    'item 2',
-    'item 3'
-    ])
+    const items = ref([])
+
+    onMounted(async () => {
+        try {
+                const response = await axios.get('http://127.0.0.1:5000/modules')
+                items.value = response.data
+                console.log('call', items.value)
+            } catch (error) {
+                console.error('Fehler beim Abrufen der Daten:', error)
+            }
+    })
 </script>
   

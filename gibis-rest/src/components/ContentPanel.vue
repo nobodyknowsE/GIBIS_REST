@@ -13,13 +13,11 @@
         <SemesterColumn/>
         <SemesterColumn/>
       </v-row>
-      <TestComponent/>
     </v-container>
   </v-sheet>
 </template>
   
 <script setup lang="ts">
-  import TestComponent from './TestComponent.vue'
   import SemesterColumn from './SemesterColumn.vue'
   import StudySelect from './StudySelect.vue'
 </script>
