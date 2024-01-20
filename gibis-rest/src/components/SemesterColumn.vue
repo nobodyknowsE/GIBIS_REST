@@ -1,6 +1,8 @@
 <template>
     <v-col>
         <v-card 
+            title="n. Semester"
+            class="text-teal-lighten-2"
             color="grey-lighten-5" 
             min-width="250" 
             min-height="700"
