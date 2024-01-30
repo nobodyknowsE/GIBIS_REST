@@ -172,14 +172,14 @@
     "Modulnummer": "C222.2",
     "Art": "Pflichtmodul",
     "ECTS": 15,
-    "Prüfungsleistung": ["PVB", "PR"],
+    "Prüfungsleistung": ["PVB", "PR"]
   },
   {
   "Modul": "Bachelormodul",
   "Modulnummer": "C241.2",
   "Art": "Pflichtmodul",
   "ECTS": 15,
-  "Prüfungsleistung": ["PH", "PV"],
+  "Prüfungsleistung": ["PH", "PV"]
 	},
 	{
 		"Modul": "Englisch für Studium und Beruf (B2)",

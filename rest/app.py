@@ -3,6 +3,7 @@ from flask_cors import CORS
 from pathlib import Path
 import glob
 import os
+import json
 
 app = Flask(__name__)
 CORS(app)
@@ -11,16 +12,21 @@ CORS(app)
 modules = {}
 
 # Get Study course names from file names
-ressourcesPath = r'rest\ressources'
-filePaths = Path(ressourcesPath).glob('*.json')
+ressourcesPath = r'rest\ressources\*long.json'
+filePaths = glob.glob(ressourcesPath)
 fileNames = [os.path.basename(file) for file in filePaths]
+studyNames = []
 
 for file in filePaths:
-    with file.open('r') as f:
-        content = f.read()
+    with open(file, 'r') as json_datei:
+        daten = json.load(json_datei)
+    moduleName = os.path.basename(file).split("-module")[0]
+    modules.update({moduleName : daten})
+    studyNames.append(moduleName)
 
+with open('test.json', 'w') as file:
+    json.dump(modules, file, indent=2)
 
-studyNames = [name.split("-modul")[0] for name in fileNames]
 names = {'Studiengänge': studyNames}
 
 #module als eine große json mit kürzel als zugriffspunkt
