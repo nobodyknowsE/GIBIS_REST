@@ -9,9 +9,6 @@
     <v-container>
       <v-row align="center" justify="center">
         <SemesterColumn/>
-        <SemesterColumn/>
-        <SemesterColumn/>
-        <SemesterColumn/>
       </v-row>
     </v-container>
   </v-sheet>

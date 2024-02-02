@@ -2,7 +2,6 @@
     <v-card 
         color="teal-lighten-2" 
         class="ma-3" 
-        min-height="80" 
         elevation="4" 
         variant="tonal"
         >
@@ -15,5 +14,6 @@
 </template>
   
 <script lang="ts" setup>
+
 
 </script>
