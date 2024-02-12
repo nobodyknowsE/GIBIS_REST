@@ -14,7 +14,6 @@ modules = {}
 # Get Study course names from file names
 ressourcesPath = r'rest\ressources\*long.json'
 filePaths = glob.glob(ressourcesPath)
-fileNames = [os.path.basename(file) for file in filePaths]
 studyNames = []
 
 for file in filePaths:
@@ -37,7 +36,14 @@ names = {'Studiengänge': studyNames}
 #GET
 @app.get("/modules")
 def get_modules():
+    print(names)
     return jsonify(names)
+
+#GET
+@app.get("/course")
+def get_course():
+    course = request.args.get('id')
+    return jsonify(modules[course])
 
 if __name__ == "__main__":
     app.run(debug=True)

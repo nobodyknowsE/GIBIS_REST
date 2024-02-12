@@ -1,5 +1,4 @@
 <template>
-   
         <v-card 
             title="Module"
             class="text-teal-lighten-2"
@@ -8,8 +7,11 @@
             min-height="700"
             >
             <v-card-item v-for="modul in receivedData">
-                <ModuleCard/>
-                {{ modul.Modul }}
+                <ModuleCard 
+                    :moduleName="modul.Modul" 
+                    :ects="modul['ECTS-Leistungspunkte']" 
+                    :dozenten="modul['Dozierende']"
+                />
             </v-card-item>
         </v-card>
 

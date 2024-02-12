@@ -4,8 +4,8 @@
             v-model="selectedCourse"
             label="Wähle einen Studiengang aus"
             :items="items"
+            @update:model-value="select"
         />
-        <v-btn @click="select" text="suchen"/>
     </v-sheet>
 </template>
   
