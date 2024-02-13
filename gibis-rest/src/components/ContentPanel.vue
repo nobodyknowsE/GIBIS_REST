@@ -6,7 +6,7 @@
     min-width="1400"
   > 
     <StudySelect/>
-    <v-container>
+    <v-container class="pt-10">
       <v-row align="center" justify="center">
         <SemesterColumn/>
       </v-row>

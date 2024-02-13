@@ -4,10 +4,14 @@
         class="ma-3" 
         elevation="4" 
         variant="tonal"
+
+        width="250"
+        min-height="220"
         >
         <v-card-item>
             <div class="text-overline">{{ moduleName }}</div>
-            <div v-for="dozent in dozenten">{{ dozent }}</div>
+            <div v-if="dozenten">{{ dozenten[0] }}</div>
+            <div v-if=" dozenten && dozenten.length > 1">[...]</div>
             <div>{{ ects }} ECTS</div>
         </v-card-item>
     </v-card>

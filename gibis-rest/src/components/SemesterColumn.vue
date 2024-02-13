@@ -1,18 +1,20 @@
 <template>
         <v-card 
-            title="Module"
-            class="text-teal-lighten-2"
+            class="text-teal-lighten-2 pt-5"
             color="grey-lighten-5" 
-            min-width="250" 
             min-height="700"
             >
-            <v-card-item v-for="modul in receivedData">
-                <ModuleCard 
-                    :moduleName="modul.Modul" 
-                    :ects="modul['ECTS-Leistungspunkte']" 
-                    :dozenten="modul['Dozierende']"
-                />
-            </v-card-item>
+            <v-row>
+                <v-card-item v-for="modul in receivedData">
+                    <v-col>
+                        <ModuleCard 
+                        :moduleName="modul.Modul" 
+                        :ects="modul['ECTS-Leistungspunkte']" 
+                        :dozenten="modul['Dozierende']"
+                        />
+                    </v-col>
+                </v-card-item>
+             </v-row>
         </v-card>
 
   </template>
