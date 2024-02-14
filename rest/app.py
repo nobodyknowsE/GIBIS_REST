@@ -5,8 +5,11 @@ import glob
 import os
 import json
 
+
+# CONFIG
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}}) 
+
 # Get modules
 modules = {}
 
@@ -43,10 +46,20 @@ def get_course():
     course = request.args.get('id')
     return jsonify(modules[course])
 
+#LOGIN
+@app.post("/login")
+def login():
+    username = request.args.get('username')
+    password = request.args.get('password')
+
+    if username == 'admin' and password == 'gibis':
+        return jsonify({'message': 'Erfolgreich angemeldet!'}), 200
+    else:
+        return jsonify({'error': 'Falscher Benutzername oder Passwort!'}), 401
+
 #POST
 @app.post("/modules")
 def add_module():
-    print(modules['20inb'])
     if request.is_json:
         module = request.get_json()
         course = request.args.get('id')
