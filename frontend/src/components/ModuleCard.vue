@@ -1,7 +1,6 @@
 <template>
     <v-card 
         color="teal-lighten-2" 
-        class="ma-3" 
         elevation="4" 
         variant="tonal"
 
@@ -18,8 +17,6 @@
 </template>
   
 <script lang="ts" setup>
-    import { defineProps } from 'vue'
-
     const props = defineProps({
         moduleName: String,
         dozenten: [],

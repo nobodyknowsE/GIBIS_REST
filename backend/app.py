@@ -1,52 +1,37 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from pathlib import Path
 import glob
 import os
 import json
 
-
-# CONFIG
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}}) 
 
-# Get modules
-modules = {}
-
-# Get Study course names from file names
-ressourcesPath = r'rest\ressources\*long.json'
+# BUILD UP DICT OF COURSES AND MODULES
+modules = {} # dict of all courses and associated modules
+studyNames = [] # list of '20inb', '20min',...
+ressourcesPath = r'backend\ressources\*long.json'
 filePaths = glob.glob(ressourcesPath)
-studyNames = []
 
 for file in filePaths:
     with open(file, 'r', encoding='utf-8') as json_datei:
         daten = json.load(json_datei)
-    moduleName = os.path.basename(file).split("-module")[0]
-    modules.update({moduleName : daten})
-    studyNames.append(moduleName)
+    courseName = os.path.basename(file).split("-module")[0]
+    studyNames.append(courseName)
+    modules.update({courseName : daten})
 
-with open('test.json', 'w', encoding='utf-8') as file:
-    json.dump(modules, file, indent=2)
+courses = {'Studiengänge': studyNames}
 
-names = {'Studiengänge': studyNames}
-
-#module als eine große json mit kürzel als zugriffspunkt
-#von frontend kommt anfrage GET zugriffspunkt mit kürzel
-#PUT kann dann auch über diesen Zugriffspunkt erfolgen
-
-
-#GET
-@app.get("/modules")
+# DEFINE END POINTS
+@app.get("/courses")
 def get_modules():
-    return jsonify(names)
+    return jsonify(courses)
 
-#GET
 @app.get("/course")
 def get_course():
     course = request.args.get('id')
     return jsonify(modules[course])
 
-#LOGIN
 @app.post("/login")
 def login():
     username = request.args.get('username')
@@ -57,7 +42,6 @@ def login():
     else:
         return jsonify({'error': 'Falscher Benutzername oder Passwort!'}), 401
 
-#POST
 @app.post("/modules")
 def add_module():
     if request.is_json:
@@ -67,6 +51,6 @@ def add_module():
         return module, 201
     return {"error": "Request must be JSON"}, 415
 
-
+# RUN APP
 if __name__ == "__main__":
     app.run(debug=True)

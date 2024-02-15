@@ -1,21 +1,21 @@
 <template>
+  <Login/>
   <v-sheet
     class="d-flex align-center justify-center flex-wrap text-center mx-auto px-4"
-    height="800"
     rounded
-    min-width="1400"
   > 
-    <StudySelect/>
+    <SelectAndAdd/>
     <v-container class="pt-10">
       <v-row align="center" justify="center">
-        <SemesterColumn/>
+        <ModulesContainer/>
       </v-row>
     </v-container>
   </v-sheet>
 </template>
   
 <script setup lang="ts">
-  import SemesterColumn from './SemesterColumn.vue'
-  import StudySelect from './StudySelect.vue'
+  import Login from './LoginDialog.vue'
+  import ModulesContainer from './ModulesContainer.vue'
+  import SelectAndAdd from './SelectAndAddSheet.vue'
 </script>
   
