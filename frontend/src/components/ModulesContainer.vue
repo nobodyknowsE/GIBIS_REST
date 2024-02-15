@@ -4,7 +4,7 @@
         color="grey-lighten-5" 
         >
         <v-card-item>
-            <v-row class="px-5">
+            <v-row class="px-5 mb-0">
                 <v-col v-for="modul in receivedData" cols="3" lg="3" md="4" sm="6">
                     <ModuleCard 
                     :moduleName="modul.Modul" 
