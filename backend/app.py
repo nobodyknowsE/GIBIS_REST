@@ -10,7 +10,7 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 # BUILD UP DICT OF COURSES AND MODULES
 modules = {} # dict of all courses and associated modules
 studyNames = [] # list of '20inb', '20min',...
-ressourcesPath = r'backend\ressources\*long.json'
+ressourcesPath = 'ressources/*long.json'
 filePaths = glob.glob(ressourcesPath)
 
 for file in filePaths:
@@ -21,6 +21,9 @@ for file in filePaths:
     modules.update({courseName : daten})
 
 courses = {'Studiengänge': studyNames}
+
+print('namesfff')
+print(courses)
 
 # DEFINE END POINTS
 @app.get("/courses")
