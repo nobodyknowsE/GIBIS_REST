@@ -22,9 +22,6 @@ for file in filePaths:
 
 courses = {'Studiengänge': studyNames}
 
-print('namesfff')
-print(courses)
-
 # DEFINE END POINTS
 @app.get("/courses")
 def get_modules():
