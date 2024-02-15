@@ -47,7 +47,7 @@ def add_module():
     if request.is_json:
         module = request.get_json()
         course = request.args.get('id')
-        modules[course].append(module)
+        modules[course].insert(0, module)
         return module, 201
     return {"error": "Request must be JSON"}, 415
 
